@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Downdog Management</title>
+    <%= csrf_meta_tags %>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %>
+  </head>
+
+  <body>
+    <nav class="nav navbar navbar-default">
+      <div class="navbar-left">
+       
+      </div>
+      <div class="container-fluid">
+      <div class="nav navbar-nav navbar-right">
+      <% if current_user && current_user.is_admin %><li><a href="/main">Main</a></li><% end %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/workouts">Classes</a></li>
+        <li><a href="/instructors">Instructors</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li>
+          <div class="navbar-text">
+             <% if current_user %>
+               |&nbsp;&nbsp;&nbsp;&nbsp;Welcome, <%= current_user.first_name %>
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               <%= link_to "Log Out", logout_path('dummy') %>
+             <% else %>
+               &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Log In", login_path %>
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               <%= link_to "Sign Up", new_client_path %>
+              <% end %>
+          </div>
+        </li>
+      </div>
+      </div>
+    </nav>
+      <%= yield %>
+    <br><br>
+    <div class="footer-wrapper">
+    </div>
+  </body>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</html>

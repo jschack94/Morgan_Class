@@ -1,0 +1,41 @@
+<div class="container">
+<h1>Sign Up</h1>
+
+<%= form_for @client do |f| %>
+  <% if @client.errors.any? %>
+    <div class="error_messages">
+      <h2>Sign Up Error</h2>
+      <ul>
+        <% for message in @client.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+   <% end %>
+   <div class="field">
+     <%= f.label :first_name %><br>
+     <%= f.text_field :first_name %><br>
+   </div>
+   <div class="field">
+     <%= f.label :last_name %><br>
+     <%= f.text_field :last_name %><br>
+   </div>
+   <div class="field">
+     <%= f.label :email %><br>
+     <%= f.text_field :email %><br>
+   </div>
+   <div class="field">
+     <%= f.label :mobile_number %><br>
+     <%= f.text_field :mobile_number %><br>
+   </div>
+   <div class="field">
+     <%= f.label :password %><br>
+     <%= f.password_field :password %><br>
+   </div>
+   <div class="field">
+     <%= f.label :password_confirmation %><br>
+     <%= f.password_field :password_confirmation %><br><br>
+   </div>
+   <div class="actions"><%= f.submit %></div>
+<% end %>
+</div>
